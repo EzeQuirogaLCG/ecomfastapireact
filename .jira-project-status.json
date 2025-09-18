@@ -1,0 +1,178 @@
+{
+  "project_id": "RTHDP",
+  "processed_plans": [
+    {
+      "plan_file": "FEATURE_PROPOSALS.md",
+      "processed_date": "2025-09-18",
+      "processed_status": "COMPLETED",
+      "task_mappings": [
+        {
+          "title": "Real-time Inventory Management System",
+          "jira_key": "RTHDP-49",
+          "ticket_type": "Epic",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Advanced Search and Filtering System",
+          "jira_key": "RTHDP-50",
+          "ticket_type": "Epic",
+          "story_points": null,
+          "priority": "High",
+          "status": "created"
+        },
+        {
+          "title": "Wishlist and Favorites System",
+          "jira_key": "RTHDP-51",
+          "ticket_type": "Epic",
+          "story_points": null,
+          "priority": "High",
+          "status": "created"
+        },
+        {
+          "title": "Advanced Analytics and Reporting Dashboard",
+          "jira_key": "RTHDP-52",
+          "ticket_type": "Epic",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Multi-vendor Marketplace Support",
+          "jira_key": "RTHDP-53",
+          "ticket_type": "Epic",
+          "story_points": null,
+          "priority": "Low",
+          "status": "created"
+        },
+        {
+          "title": "Implement full-text search across product names and descriptions",
+          "jira_key": "RTHDP-54",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Add filters for price range, category, rating, availability",
+          "jira_key": "RTHDP-55",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Implement sorting by price, rating, popularity, newest",
+          "jira_key": "RTHDP-56",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Add search suggestions and autocomplete functionality",
+          "jira_key": "RTHDP-57",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Implement add/remove products from wishlist functionality",
+          "jira_key": "RTHDP-58",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Create wishlist display page on user profile",
+          "jira_key": "RTHDP-59",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Implement email notifications for price drops",
+          "jira_key": "RTHDP-60",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Implement real-time inventory level monitoring",
+          "jira_key": "RTHDP-61",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Create configurable low stock threshold system",
+          "jira_key": "RTHDP-62",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Build low stock alerts in admin dashboard",
+          "jira_key": "RTHDP-63",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Create sales metrics dashboard (revenue, orders, AOV)",
+          "jira_key": "RTHDP-64",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Implement customer analytics (new vs returning, demographics)",
+          "jira_key": "RTHDP-65",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Build product performance metrics dashboard",
+          "jira_key": "RTHDP-66",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Medium",
+          "status": "created"
+        },
+        {
+          "title": "Create vendor registration and approval system",
+          "jira_key": "RTHDP-67",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Low",
+          "status": "created"
+        },
+        {
+          "title": "Build separate vendor dashboards for product management",
+          "jira_key": "RTHDP-68",
+          "ticket_type": "Tarea",
+          "story_points": null,
+          "priority": "Low",
+          "status": "created"
+        }
+      ],
+      "summary": {
+        "epics": 5,
+        "stories": 0,
+        "tasks": 15,
+        "total_story_points": 0
+      }
+    }
+  ]
+}
