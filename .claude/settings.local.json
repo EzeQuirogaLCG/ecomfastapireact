@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Atlassian-MCP-Server__atlassianUserInfo",
+      "mcp__Atlassian-MCP-Server__search",
+      "mcp__Atlassian-MCP-Server__fetch",
+      "mcp__Atlassian-MCP-Server__getJiraIssue",
+      "mcp__Atlassian-MCP-Server__searchJiraIssuesUsingJql",
+      "mcp__Atlassian-MCP-Server__getVisibleJiraProjects",
+      "mcp__Atlassian-MCP-Server__createJiraIssue",
+      "mcp__Atlassian-MCP-Server__getAccessibleAtlassianResources",
+      "mcp__filesystem__directory_tree",
+      "mcp__filesystem__read_text_file",
+      "mcp__filesystem__get_file_info",
+      "mcp__ide__executeCode"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "filesystem",
+    "task-master",
+    "terraform",
+    "graphiti",
+    "github",
+    "Atlassian-MCP-Server"
+  ]
+}
