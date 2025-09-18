@@ -10,11 +10,13 @@ router = APIRouter(prefix="/users", tags=["Users"])
 
 
 @router.get("/")
+@router.get("")
 def getAllUser(db: Session = Depends(get_db)):
     return UserService.get_allUser(db=db)
 
 
 @router.post("/")
+@router.post("")
 def createUser(user: RegisterUser, db: Session = Depends(get_db)):
     return UserService.create_user(user, db)
 
