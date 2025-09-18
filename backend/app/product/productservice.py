@@ -52,6 +52,14 @@ class ProductService:
         # Ambil semua produk dari database
         products = ProductService.get_all_product(db)
 
+        # Verificar si hay productos
+        if not products:
+            return {
+                "recommended_products": [],
+                "accuracy": 0.0,
+                "message": "No hay productos disponibles para recomendaciones"
+            }
+
         # Buat DataFrame dari produk
         df = pd.DataFrame([{
             "id": product.id,
@@ -63,24 +71,54 @@ class ProductService:
             "rating": float(product.rating),
         } for product in products])
 
-        # Membuat model Nearest Neighbors
-        nn_model = NearestNeighbors(n_neighbors=5, metric='cosine', algorithm='brute', n_jobs=-1)
-        nn_model.fit(df[['rating', 'price']])  # Menggunakan kolom 'rating' dan 'price' untuk pencocokan
+        # Verificar si el DataFrame está vacío o no tiene las columnas necesarias
+        if df.empty or 'rating' not in df.columns or 'price' not in df.columns:
+            return {
+                "recommended_products": [],
+                "accuracy": 0.0,
+                "message": "Datos de productos insuficientes para generar recomendaciones"
+            }
 
-        # Ambil 10 produk yang mirip dengan produk pertama dalam dataset
-        similar_indices = nn_model.kneighbors(df[['rating', 'price']].iloc[[0]], n_neighbors=10, return_distance=False)
+        # Si hay menos de 2 productos, devolver todos los productos ordenados por rating
+        if len(df) < 2:
+            recommended_products = df.sort_values('rating', ascending=False).to_dict(orient="records")
+            return {
+                "recommended_products": [{
+                    "id": product["id"],
+                    "name": product["name"],
+                    "description": product["description"],
+                    "image": product["image"],
+                    "countInStock": product["countInStock"],
+                    "price": product["price"],
+                    "rating": product["rating"]
+                } for product in recommended_products],
+                "accuracy": 1.0,
+                "message": "Recomendaciones basadas en todos los productos disponibles"
+            }
 
-        # Dapatkan produk yang direkomendasikan berdasarkan produk yang mirip
-        recommended_products = []
-        for similar_index in similar_indices:
-            similar_products = df.iloc[similar_index[1:]]  # Menghindari produk yang sama
-            recommended_products.extend(similar_products.to_dict(orient="records"))
+        try:
+            # Membuat model Nearest Neighbors
+            nn_model = NearestNeighbors(n_neighbors=min(5, len(df)), metric='cosine', algorithm='brute', n_jobs=-1)
+            nn_model.fit(df[['rating', 'price']])  # Menggunakan kolom 'rating' dan 'price' untuk pencocokan
 
-        # Sortir produk yang direkomendasikan berdasarkan rating terbesar, kemudian harga terkecil
-        recommended_products.sort(key=lambda x: (-x['rating'], x['price']))
+            # Ambil 10 produk yang mirip dengan produk pertama dalam dataset
+            similar_indices = nn_model.kneighbors(df[['rating', 'price']].iloc[[0]], n_neighbors=min(10, len(df)), return_distance=False)
 
-        # Ambil 10 produk rekomendasi teratas
-        top_recommended_products = recommended_products[:10]
+            # Dapatkan produk yang direkomendasikan berdasarkan produk yang mirip
+            recommended_products = []
+            for similar_index in similar_indices:
+                similar_products = df.iloc[similar_index[1:]]  # Menghindari produk yang sama
+                recommended_products.extend(similar_products.to_dict(orient="records"))
+
+            # Sortir produk yang direkomendasikan berdasarkan rating terbesar, kemudian harga terkecil
+            recommended_products.sort(key=lambda x: (-x['rating'], x['price']))
+
+            # Ambil 10 produk rekomendasi teratas
+            top_recommended_products = recommended_products[:10]
+
+        except Exception as e:
+            # Si hay un error con el algoritmo de recomendación, devolver productos ordenados por rating
+            top_recommended_products = df.sort_values('rating', ascending=False).head(10).to_dict(orient="records")
 
         # Konversi hasil ke dalam format yang sesuai
         recommended_product_info = [{
@@ -95,7 +133,7 @@ class ProductService:
 
         # Menghitung metrik akurasi
         accuracy = 0.0
-        if top_recommended_products:
+        if top_recommended_products and len(df) >= 10:
             actual_top_rated_products = df.nlargest(10, 'rating')
             matching_products = [product for product in top_recommended_products if product['id'] in actual_top_rated_products['id'].tolist()]
             accuracy = len(matching_products) / 10.0  # 10 adalah jumlah produk yang dipilih

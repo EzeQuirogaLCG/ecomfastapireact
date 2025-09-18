@@ -1,0 +1,45 @@
+---
+alwaysApply: true
+description: "Global rule to ensure all code and comments are in English by default"
+---
+
+# English Default Language Rule
+
+This rule ensures that all generated code, comments, documentation, and text content should be written in English by default, unless explicitly specified otherwise.
+
+## Guidelines
+
+- **Code Generation**: All variable names, function names, class names, and identifiers should use English words
+- **Comments**: All code comments should be written in English
+- **Documentation**: All documentation, README files, and inline documentation should be in English
+- **Error Messages**: All error messages and user-facing text should be in English
+- **API Responses**: All API response messages and descriptions should be in English
+- **Database Schema**: Table names, column names, and constraints should use English naming conventions
+- **Configuration**: Configuration keys, values, and descriptions should be in English
+
+## Exceptions
+
+- Only use other languages when explicitly requested by the user
+- When working with existing codebases that have established non-English conventions
+- When dealing with internationalization (i18n) features where multiple languages are required
+- When the user specifically asks for content in a different language
+
+## Examples
+
+✅ **Correct (English)**:
+```javascript
+// Calculate the total price including tax
+function calculateTotalPrice(basePrice, taxRate) {
+  return basePrice * (1 + taxRate);
+}
+```
+
+❌ **Incorrect (Non-English)**:
+```javascript
+// Calcular el precio total incluyendo impuestos
+function calcularPrecioTotal(precioBase, tasaImpuesto) {
+  return precioBase * (1 + tasaImpuesto);
+}
+```
+
+This rule applies to all file types and programming languages in the project.
