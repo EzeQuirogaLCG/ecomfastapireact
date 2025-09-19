@@ -7,6 +7,7 @@ This is a simple project with Fastapi, sqlalchemy, react, redux, and Postgresql.
 Before running this project, you need to install the following tools:
 
 ### 1. Node.js Installation
+
 This project uses Claude Code agents that require Node.js. Install Node.js using NVM (Node Version Manager):
 
 ```bash
@@ -23,6 +24,7 @@ nvm use --lts
 ```
 
 ### 2. Claude Code Installation
+
 After installing Node.js, install Claude Code globally:
 
 ```bash
@@ -41,8 +43,9 @@ This application has been fully containerized using Docker and Docker Compose. A
 - Avoid dependency conflicts
 
 The containerization includes:
+
 - **Backend**: FastAPI application with Python dependencies
-- **Frontend**: React application with Node.js dependencies  
+- **Frontend**: React application with Node.js dependencies
 - **Database**: PostgreSQL database with persistent data storage
 - **Reverse Proxy**: Nginx for routing and load balancing
 
@@ -57,6 +60,13 @@ url: http://localhost:8000/docs
 ### Option 1: Using Docker (Recommended)
 
 1. **Prerequisites**: Make sure you have Docker and Docker Compose installed
+
+**Note for WSL2 users**: If you encounter issues opening the devcontainer from Cursor while in WSL, first run the cleanup script:
+
+```bash
+./cleanup-devcontainer.sh
+```
+
 2. **Clone the repository**:
    ```bash
    git clone https://github.com/renaldyhidayatt/ecomfastapireact
